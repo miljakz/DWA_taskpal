@@ -1,36 +1,45 @@
-# DWA_taskpal
+Evo kako možete napisati README datoteku za vašu aplikaciju "TaskPal" na hrvatskom jeziku:
+
+---
 
 # TaskPal
 
-TaskPal je web aplikacija za upravljanje zadacima koja korisnicima omogućuje organizaciju i praćenje njihovih dnevnih aktivnosti. Aplikacija je izrađena pomoću Vue.js na frontendu i Node.js na backendu.
+## Opis Projekta
+
+TaskPal je aplikacija za upravljanje zadacima koja vam omogućuje da organizirate svoje dnevne aktivnosti na jednostavan i efikasan način. Aplikacija je dizajnirana da pomogne korisnicima da ostanu produktivni, omogućavajući im da prate svoje zadatke, postavljaju prioritete i rokove.
 
 ## Značajke
 
-- Kreiranje, uređivanje i brisanje zadataka.
-- Filtriranje zadataka po kategorijama.
-- Autentifikacija korisnika.
-- Responzivni dizajn za desktop i mobilne uređaje.
+- **Dodavanje Zadataka**: Korisnici mogu brzo dodavati nove zadatke, opisivati ih i postavljati rokove.
+- **Upravljanje Kategorijama**: Mogućnost organiziranja zadataka unutar različitih kategorija.
+- **Filtriranje Zadataka**: Zadaci se mogu filtrirati prema kategoriji ili prioritetu.
+- **Gamifikacija**: Aplikacija uključuje elemente gamifikacije kao što su bodovi i bedževi za dovršene zadatke, potičući korisnike na produktivnost.
+- **Mobilna Prijaznost**: Aplikacija je responzivna i prilagođena mobilnim uređajima.
 
 ## Tehnologije
 
-Projekt koristi sljedeće tehnologije:
-- Frontend: Vue.js, Vuex, Vue Router
-- Backend: Node.js, Express, MongoDB
-- Autentifikacija: Firebase Auth
+TaskPal je izgrađen koristeći sljedeće tehnologije:
+- **Frontend**: Vue.js
+- **Backend**: Node.js s Express frameworkom
+- **Baza podataka**: MongoDB
+- **Autentifikacija**: Firebase
 
-## Lokalno postavljanje
+## Pokretanje Projekta
 
-Za pokretanje TaskPal aplikacije na lokalnom računalu slijedite ove korake:
+Za pokretanje projekta lokalno, slijedite ove korake:
 
-### Preduvjeti
+1. Klonirajte repozitorij:
+   ```
+   git clone url-to-repository
+   ```
+2. Instalirajte ovisnosti:
+   ```
+   cd TaskPal
+   npm install
+   ```
+3. Pokrenite razvojni server:
+   ```
+   npm run serve
+   ```
 
-Prije početka, osigurajte da imate instalirane sljedeće alate:
-- [Node.js](https://nodejs.org/en/)
-- [MongoDB](https://www.mongodb.com/try/download/community)
-
-### Instalacija
-
-1. Klonirajte repozitorij na svoje računalo:
-   ```bash
-   git clone https://github.com/vaseime/taskpal.git
-   cd taskpal
+Posjetite `http://localhost:8080` u vašem pregledniku da bi pristupili aplikaciji.
