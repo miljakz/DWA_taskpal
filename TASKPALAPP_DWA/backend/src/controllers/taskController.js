@@ -1,4 +1,5 @@
 const Task = require('../models/Task');
+const User = require('../models/User'); // Make sure to import the User model
 
 // Get all tasks
 exports.getAllTasks = async (req, res) => {
@@ -69,6 +70,29 @@ exports.deleteTask = async (req, res) => {
 
         await task.remove();
         res.json({ message: 'Task deleted' });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
+// Complete a task and update user points
+exports.completeTask = async (req, res) => {
+    try {
+        const { userId, taskId } = req.body;
+        const task = await Task.findById(taskId);
+        if (!task) {
+            return res.status(404).json({ message: "Task not found" });
+        }
+
+        task.completed = true; 
+        const updatedTask = await task.save();
+
+        // Update user points
+        const user = await User.findById(userId);
+        user.points += 10;  
+        const updatedUser = await user.save();
+
+        res.json({ updatedTask, userPoints: updatedUser.points });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }

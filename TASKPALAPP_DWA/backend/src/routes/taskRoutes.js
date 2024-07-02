@@ -5,7 +5,8 @@ const {
     createTask,
     getTask,
     updateTask,
-    deleteTask
+    deleteTask,
+    completeTask  // Include the new function
 } = require('../controllers/taskController');
 
 // Get all tasks
@@ -22,5 +23,8 @@ router.put('/:id', updateTask);
 
 // Delete a task by ID
 router.delete('/:id', deleteTask);
+
+// Complete a task by ID
+router.post('/:id/complete', completeTask);  // New route for completing a task
 
 module.exports = router;

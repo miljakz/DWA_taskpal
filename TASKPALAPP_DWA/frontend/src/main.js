@@ -2,6 +2,7 @@ import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
 import store from './store';
+import Axios from 'axios';  // Import Axios for global HTTP requests
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
@@ -19,6 +20,10 @@ const firebaseConfig = {
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+
+// Configure Axios as a Vue prototype to be used globally
+Vue.prototype.$axios = Axios;
+Axios.defaults.baseURL = process.env.VUE_APP_API_URL; // Set the base URL for Axios based on the environment variable
 
 Vue.config.productionTip = false;
 

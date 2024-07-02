@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const taskSchema = new mongoose.Schema({
     title: {
         type: String,
-        required: [true, 'Title is required'],
+        required: true,
         trim: true
     },
     description: {
@@ -13,14 +13,14 @@ const taskSchema = new mongoose.Schema({
     category: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Category',
-        required: [true, 'Category is required']
+        required: true
     },
     dueDate: {
         type: Date
     },
-    isCompleted: {
+    completed: {
         type: Boolean,
-        default: false
+        default: false  // Indicates if the task is completed or not
     },
     createdDate: {
         type: Date,
