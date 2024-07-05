@@ -6,25 +6,23 @@ const {
     getTask,
     updateTask,
     deleteTask,
-    completeTask  // Include the new function
+    completeTask,  // Function for completing tasks
+    addSubtask,    // Function to add a subtask
+    updateSubtask, // Function to update a subtask
+    deleteSubtask  // Function to delete a subtask
 } = require('../controllers/taskController');
 
-// Get all tasks
-router.get('/', getAllTasks);
+// Routes for main tasks
+router.get('/', getAllTasks);                    // Get all tasks
+router.get('/:id', getTask);                     // Get a single task by ID
+router.post('/', createTask);                    // Create a new task
+router.put('/:id', updateTask);                  // Update an existing task by ID
+router.delete('/:id', deleteTask);               // Delete a task by ID
+router.post('/:id/complete', completeTask);      // Complete a task by ID
 
-// Get a single task by ID
-router.get('/:id', getTask);
-
-// Create a new task
-router.post('/', createTask);
-
-// Update an existing task by ID
-router.put('/:id', updateTask);
-
-// Delete a task by ID
-router.delete('/:id', deleteTask);
-
-// Complete a task by ID
-router.post('/:id/complete', completeTask);  // New route for completing a task
+// Routes for subtasks within a task
+router.post('/:taskId/subtasks', addSubtask);             // Add a subtask to a task by ID
+router.put('/:taskId/subtasks/:subtaskId', updateSubtask); // Update a subtask by ID within a task
+router.delete('/:taskId/subtasks/:subtaskId', deleteSubtask); // Delete a subtask by ID within a task
 
 module.exports = router;

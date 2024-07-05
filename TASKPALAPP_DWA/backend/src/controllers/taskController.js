@@ -1,10 +1,12 @@
 const Task = require('../models/Task');
-const User = require('../models/User'); // Make sure to import the User model
+const User = require('../models/User'); // Make sure the User model is imported correctly
 
 // Get all tasks
 exports.getAllTasks = async (req, res) => {
     try {
-        const tasks = await Task.find().populate('category');
+        const tasks = await Task.find()
+                               .populate('category')
+                               .populate('subtasks.assignee');
         res.json(tasks);
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -14,7 +16,9 @@ exports.getAllTasks = async (req, res) => {
 // Get a single task by ID
 exports.getTask = async (req, res) => {
     try {
-        const task = await Task.findById(req.params.id).populate('category');
+        const task = await Task.findById(req.params.id)
+                               .populate('category')
+                               .populate('subtasks.assignee');
         if (!task) {
             return res.status(404).json({ message: 'Task not found' });
         }
@@ -31,7 +35,9 @@ exports.createTask = async (req, res) => {
             title: req.body.title,
             description: req.body.description,
             category: req.body.category,
-            dueDate: req.body.dueDate
+            dueDate: req.body.dueDate,
+            priority: req.body.priority,
+            subtasks: req.body.subtasks || []
         });
         const savedTask = await newTask.save();
         res.status(201).json(savedTask);
@@ -43,18 +49,23 @@ exports.createTask = async (req, res) => {
 // Update an existing task by ID
 exports.updateTask = async (req, res) => {
     try {
-        const task = await Task.findById(req.params.id);
+        const task = await Task.findByIdAndUpdate(req.params.id, {
+            $set: {
+                title: req.body.title,
+                description: req.body.description,
+                category: req.body.category,
+                dueDate: req.body.dueDate,
+                priority: req.body.priority,
+                completed: req.body.completed,
+                completionPercentage: req.body.completionPercentage,
+                subtasks: req.body.subtasks
+            }
+        }, { new: true });
+
         if (!task) {
             return res.status(404).json({ message: 'Task not found' });
         }
-
-        task.title = req.body.title || task.title;
-        task.description = req.body.description || task.description;
-        task.category = req.body.category || task.category;
-        task.dueDate = req.body.dueDate || task.dueDate;
-
-        const updatedTask = await task.save();
-        res.json(updatedTask);
+        res.json(task);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
@@ -67,9 +78,8 @@ exports.deleteTask = async (req, res) => {
         if (!task) {
             return res.status(404).json({ message: 'Task not found' });
         }
-
         await task.remove();
-        res.json({ message: 'Task deleted' });
+        res.json({ message: 'Task deleted successfully' });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
@@ -84,15 +94,17 @@ exports.completeTask = async (req, res) => {
             return res.status(404).json({ message: "Task not found" });
         }
 
-        task.completed = true; 
+        task.completed = true;
+        task.completionPercentage = 100;
         const updatedTask = await task.save();
 
-        // Update user points
         const user = await User.findById(userId);
-        user.points += 10;  
-        const updatedUser = await user.save();
+        if (user) {
+            user.points += 10;  // Assuming each task completion awards 10 points
+            await user.save();
+        }
 
-        res.json({ updatedTask, userPoints: updatedUser.points });
+        res.json({ updatedTask, userPoints: user.points });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
