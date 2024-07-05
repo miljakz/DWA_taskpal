@@ -1,4 +1,3 @@
-```markdown
 # TaskPal
 
 TaskPal je aplikacija za upravljanje zadacima koja korisnicima omogućuje efikasnije upravljanje vremenom i zadacima uz pomoć tehnike Pomodoro.
