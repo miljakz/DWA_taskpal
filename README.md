@@ -1,45 +1,49 @@
-Evo kako možete napisati README datoteku za vašu aplikaciju "TaskPal" na hrvatskom jeziku:
-
----
-
+```markdown
 # TaskPal
 
-## Opis Projekta
+TaskPal je aplikacija za upravljanje zadacima koja korisnicima omogućuje efikasnije upravljanje vremenom i zadacima uz pomoć tehnike Pomodoro.
 
-TaskPal je aplikacija za upravljanje zadacima koja vam omogućuje da organizirate svoje dnevne aktivnosti na jednostavan i efikasan način. Aplikacija je dizajnirana da pomogne korisnicima da ostanu produktivni, omogućavajući im da prate svoje zadatke, postavljaju prioritete i rokove.
+## Funkcionalnosti
 
-## Značajke
-
-- **Dodavanje Zadataka**: Korisnici mogu brzo dodavati nove zadatke, opisivati ih i postavljati rokove.
-- **Upravljanje Kategorijama**: Mogućnost organiziranja zadataka unutar različitih kategorija.
-- **Filtriranje Zadataka**: Zadaci se mogu filtrirati prema kategoriji ili prioritetu.
-- **Gamifikacija**: Aplikacija uključuje elemente gamifikacije kao što su bodovi i bedževi za dovršene zadatke, potičući korisnike na produktivnost.
-- **Mobilna Prijaznost**: Aplikacija je responzivna i prilagođena mobilnim uređajima.
+- **Upravljanje Zadacima:** Korisnici mogu stvarati, uređivati i brisati zadatke.
+- **Pomodoro Timer:** Integrirani Pomodoro timer pomaže korisnicima da se fokusiraju na rad kroz određene vremenske intervale.
+- **Praćenje Aktivnosti:** Aktivnosti svakog korisnika bilježe se za potrebe analize i poboljšanja produktivnosti.
+- **Autentikacija:** Siguran pristup i upravljanje korisničkim računima.
+- **Uloge i Dozvole:** Podrška za različite korisničke uloge sa specifičnim dozvolama.
 
 ## Tehnologije
 
-TaskPal je izgrađen koristeći sljedeće tehnologije:
-- **Frontend**: Vue.js
-- **Backend**: Node.js s Express frameworkom
-- **Baza podataka**: MongoDB
-- **Autentifikacija**: Firebase
+TaskPal koristi sljedeće tehnologije:
+
+- **Frontend:** Vue.js
+- **Backend:** Node.js, Express.js
+- **Baza Podataka:** MongoDB
+- **Autentikacija:** Firebase Authentication
 
 ## Pokretanje Projekta
 
-Za pokretanje projekta lokalno, slijedite ove korake:
+Da biste pokrenuli TaskPal lokalno, slijedite ove korake:
 
 1. Klonirajte repozitorij:
+   ```bash
+   git clone https://github.com/example/taskpal.git
    ```
-   git clone url-to-repository
-   ```
-2. Instalirajte ovisnosti:
-   ```
-   cd TaskPal
+2. Instalirajte ovisnosti za backend:
+   ```bash
+   cd taskpal/backend
    npm install
    ```
-3. Pokrenite razvojni server:
+3. Instalirajte ovisnosti za frontend:
+   ```bash
+   cd ../frontend
+   npm install
    ```
+4. Pokrenite backend server:
+   ```bash
+   npm start
+   ```
+5. Pokrenite frontend razvojni server:
+   ```bash
    npm run serve
    ```
-
-Posjetite `http://localhost:8080` u vašem pregledniku da bi pristupili aplikaciji.
+6. Otvorite `http://localhost:8080` u vašem pregledniku.
