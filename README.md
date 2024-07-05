@@ -5,20 +5,20 @@ TaskPal je aplikacija za upravljanje zadacima koja korisnicima omogućuje efikas
 
 ## Funkcionalnosti
 
-- **Upravljanje Zadacima:** Korisnici mogu stvarati, uređivati i brisati zadatke.
-- **Pomodoro Timer:** Integrirani Pomodoro timer pomaže korisnicima da se fokusiraju na rad kroz određene vremenske intervale.
-- **Praćenje Aktivnosti:** Aktivnosti svakog korisnika bilježe se za potrebe analize i poboljšanja produktivnosti.
-- **Autentikacija:** Siguran pristup i upravljanje korisničkim računima.
-- **Uloge i Dozvole:** Podrška za različite korisničke uloge sa specifičnim dozvolama.
+- Upravljanje Zadacima: Korisnici mogu stvarati, uređivati i brisati zadatke.
+- Pomodoro Timer: Integrirani Pomodoro timer pomaže korisnicima da se fokusiraju na rad kroz određene vremenske intervale.
+- Praćenje Aktivnosti: Aktivnosti svakog korisnika bilježe se za potrebe analize i poboljšanja produktivnosti.
+- Autentikacija: Siguran pristup i upravljanje korisničkim računima.
+- Uloge i Dozvole: Podrška za različite korisničke uloge sa specifičnim dozvolama.
 
 ## Tehnologije
 
 TaskPal koristi sljedeće tehnologije:
 
-- **Frontend:** Vue.js
-- **Backend:** Node.js, Express.js
-- **Baza Podataka:** MongoDB
-- **Autentikacija:** Firebase Authentication
+- Frontend: Vue.js
+- Backend: Node.js, Express.js
+- Baza Podataka: MongoDB
+- Autentikacija: Firebase Authentication
 
 ## Pokretanje Projekta
 
